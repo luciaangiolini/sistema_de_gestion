@@ -4,10 +4,12 @@
 
 #ifndef SISTEMA_DE_GESTION_CLIENTES_H
 #define SISTEMA_DE_GESTION_CLIENTES_H
+#include "iostream"
+using namespace std;
 
 
 class clientes {
-
+    string nombre;
 };
 
 
