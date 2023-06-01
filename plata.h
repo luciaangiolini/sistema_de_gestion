@@ -7,7 +7,7 @@
 
 
 class plata {
-	int hola2;
+	int hola3;
 };
 
 
