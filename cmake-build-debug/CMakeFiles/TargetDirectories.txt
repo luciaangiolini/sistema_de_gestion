@@ -1,3 +1,0 @@
-C:/Users/Usuario/Desktop/Sistema de Gestion/cmake-build-debug/CMakeFiles/Sistema_de_Gestion.dir
-C:/Users/Usuario/Desktop/Sistema de Gestion/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/Usuario/Desktop/Sistema de Gestion/cmake-build-debug/CMakeFiles/rebuild_cache.dir
