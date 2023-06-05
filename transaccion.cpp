@@ -6,7 +6,7 @@
 #include <iostream>
 using namespace std;
 
-transaccion::transaccion(int un_n_transaccion, int un_dia, int un_mes, int un_anio) {
+transaccion::transaccion(int un_n_transaccion, int un_dia, int un_mes, int un_anio,float una_cantidad) {
     dia = un_dia;
     mes= un_mes;
     anio= un_anio;
@@ -35,4 +35,10 @@ int transaccion::get_dia() {
 }
 int transaccion::get_mes() {
     return mes;
+}
+float transaccion::get_cantidad() {
+    return cantidad;
+}
+void transaccion::set_cantidad(float _cantidad){
+    cantidad=_cantidad;
 }

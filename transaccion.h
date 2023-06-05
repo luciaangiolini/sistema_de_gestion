@@ -12,8 +12,9 @@ class transaccion {
     int dia;
     int mes;
     int anio;
+    float cantidad;
 public:
-    transaccion(int n_transaccion, int dia, int mes,int anio);
+    transaccion(int un_n_transaccion, int un_dia, int un_mes,int un_anio, float una_cantidad);
     void set_num_t(int un_num);
     int get_num_t();
     void set_dia(int _dia);
@@ -22,6 +23,8 @@ public:
     int get_mes();
     void set_anio(int _anio);
     int get_anio();
+    void set_cantidad(float _cantidad);
+    float get_cantidad();
 };
 
 
