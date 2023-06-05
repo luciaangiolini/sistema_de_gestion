@@ -4,9 +4,11 @@
 
 #ifndef SISTEMA_DE_GESTION_ORO_H
 #define SISTEMA_DE_GESTION_ORO_H
+#include "clientes.h"
+#include <iostream>
+using namespace std;
 
-
-class oro {
+class oro: public clientes{
 
 };
 

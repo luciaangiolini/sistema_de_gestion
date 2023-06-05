@@ -12,7 +12,7 @@
 #include <fstream>
 using namespace std;
 
-class clientes: public black, public oro, public plata{
+class clientes{
     string tipo;
 public:
     cuenta cuenta_datos;
