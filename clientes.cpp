@@ -6,7 +6,7 @@
 #include <iostream>
 using namespace std;
 
-clientes::clientes(int _n_cliente, int _nombre, int _apellido, int _anio, bool _estado, string _tipo){
+clientes::clientes(int _n_cliente, string _nombre, string _apellido, int _anio, bool _estado, string _tipo) {
     cuenta_datos.set_n_cliente(_n_cliente);
     cuenta_datos.set_nombre(_nombre);
     cuenta_datos.set_apellido(_apellido);
@@ -14,7 +14,7 @@ clientes::clientes(int _n_cliente, int _nombre, int _apellido, int _anio, bool _
     cuenta_datos.set_estado(_estado);
     tipo = _tipo;
 }
-void clientes::set_tipo(string_tipo) {
+void clientes::set_tipo(string _tipo) {
     tipo = _tipo;
 }
 string clientes::get_tipo() {
@@ -23,7 +23,7 @@ string clientes::get_tipo() {
 
 void clientes::start() {
     int opcion;
-    while (1=1){
+    while (1==1){
         cout << "SISTEMA DE GESTION" << endl << endl;
         cout << "1 - Dar de alta un cliente" << endl;
         cout << "2 - Dar de baja un cliente" << endl;
