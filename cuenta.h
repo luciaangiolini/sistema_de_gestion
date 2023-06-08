@@ -15,10 +15,11 @@ class cuenta{
     string apellido;
     int anio;
     bool estado;
-    transaccion t[10];
     int cant_transacciones = 0;
     float saldo;
+    transaccion t[10];
 public:
+
     cuenta(){};
     cuenta(int _n_cliente, string _nombre, string _apellido, int _anio, bool _estado, float _saldo);
     void set_n_cliente(int _n_cliente);

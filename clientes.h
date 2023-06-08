@@ -7,9 +7,6 @@
 #include <fstream>
 #include "cuenta.h"
 #include "transaccion.h"
-#include "black.h"
-#include "oro.h"
-#include "plata.h"
 #pragma
 using namespace std;
 
