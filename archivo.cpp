@@ -2,8 +2,6 @@
 //
 
 #include "archivo.h"
-#include "iostream"
-#pragma once
 using namespace std;
 void archivo::create_fileT() {
     file_transacciones.open("transacciones.txt",ios::out);

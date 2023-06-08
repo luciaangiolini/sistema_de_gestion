@@ -1,6 +1,2 @@
-cmake_minimum_required(VERSION 3.24)
-project(Sistema_de_Gestion)
-
-set(CMAKE_CXX_STANDARD 17)
-
-add_executable(Sistema_de_Gestion main.cpp transaccion.h transaccion.cpp cuenta.h clientes.h cuenta.cpp clientes.cpp extracciones.cpp extracciones.h deposito.cpp deposito.h archivo.h archivo.cpp)
+project("SGC")
+add_executable(main.cpp transaccion.cpp extracciones.cpp cuenta.cpp deposito.cpp clientes.cpp archivo.cpp main.cpp)

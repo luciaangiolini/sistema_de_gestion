@@ -2,9 +2,7 @@
 // Created by Luchi on 30/5/2023.
 //
 #include "clientes.h"
-#include "cuenta.h"
-#include <iostream>
-#pragma
+
 using namespace std;
 
 clientes::clientes(int _n_cliente, string _nombre, string _apellido, int _anio, bool _estado, string _tipo) {
@@ -38,3 +36,4 @@ void clientes::set_tarjeta(float _limite) {
 float clientes::get_tarjeta() {
     return tarjeta;
 }
+

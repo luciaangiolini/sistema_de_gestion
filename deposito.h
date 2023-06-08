@@ -5,7 +5,6 @@
 #ifndef SISTEMA_DE_GESTION_DEPOSITO_H
 #define SISTEMA_DE_GESTION_DEPOSITO_H
 #include "transaccion.h"
-#include "clientes.h"
 #include "cuenta.h"
 
 

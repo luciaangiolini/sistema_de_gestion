@@ -35,11 +35,10 @@ int main() {
             case 2:
                 break;
             case 3:{
-                cuenta::crear_deposito();
+
                 break;
             }
             case 4: {
-                cuenta::crear_extraccion();
                 break;
             }
             case 5: {
@@ -79,7 +78,7 @@ void alta_cliente (clientes *c, int n_clientes) {
     float _saldo;
     bool _estado;
 
-    cout << "ingrese nombre, apellido, saldo y año de incorporacion" << endl;
+    cout << "Ingrese nombre, apellido, saldo y anio de incorporacion: " << endl;
     cin >> _nombre >> _apellido >> _saldo >> _anio;
 
     c->set_nombre(_nombre);

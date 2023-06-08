@@ -50,25 +50,11 @@ float cuenta::get_saldo() {
     return saldo;
 }
 
-void cuenta::crear_deposito() {
-    int N; /*Numero de depósito?*/
-    float monto_deposito;
-    int _dia, _mes, _anio;
-    cout << "Ingrese monto a depositar: " << endl;
-    cin >> monto_deposito;
-    cout << "Ingrese dia, mes y anio: " << endl;
-    cin >> _dia, _mes, _anio;
-    //Completar para que le aumente la cantidad de plata en la cuenta y lo agregue al archivo
+void cuenta::crear_deposito(float monto_deposito, int N, int _dia, int _mes, int _anio) {
+
 }
 
-void cuenta::crear_extraccion() {
-    int N; /*Numero de extraccion?*/
-    float monto_extraccion;
-    int _dia, _mes, _anio;
-    cout << "Ingrese monto a depositar: " << endl;
-    cin >> monto_extraccion;
-    cout << "Ingrese dia, mes y anio: " << endl;
-    cin >> _dia, _mes, _anio;
-    //Completar para que le reste la cantidad de plata en la cuenta y lo agregue al archivo
+void cuenta::crear_extraccion(float monto_extraccion, int N, int _dia, int _mes, int _anio) {
+
 }
 

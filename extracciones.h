@@ -5,9 +5,7 @@
 #ifndef SISTEMA_DE_GESTION_EXTRACCIONES_H
 #define SISTEMA_DE_GESTION_EXTRACCIONES_H
 #include "transaccion.h"
-#include "transaccion.cpp"
-#include "clientes.h"
-#include "clientes.h"
+#include "cuenta.h"
 #pragma once
 
 class extracciones: public transaccion{
