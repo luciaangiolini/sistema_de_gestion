@@ -6,11 +6,12 @@
 #define SISTEMA_DE_GESTION_DEPOSITO_H
 #include "transaccion.h"
 #include "clientes.h"
+#include "cuenta.h"
 
 
 class deposito: public transaccion{
 public:
-    void depositar(float cant_deposito);
+    void depositar(cuenta c,float cant_deposito);
 };
 
 

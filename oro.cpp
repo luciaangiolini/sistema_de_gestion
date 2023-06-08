@@ -3,3 +3,7 @@
 //
 
 #include "oro.h"
+
+oro::oro() {
+    limit_tarjeta= 50000;
+}

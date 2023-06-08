@@ -9,7 +9,9 @@
 using namespace std;
 
 class oro: public clientes{
-
+    float limit_tarjeta;
+public:
+    oro();
 };
 
 

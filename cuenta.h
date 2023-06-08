@@ -5,6 +5,8 @@
 #ifndef SISTEMA_DE_GESTION_CUENTA_H
 #define SISTEMA_DE_GESTION_CUENTA_H
 #include <iostream>
+#include "transaccion.h"
+#pragma
 using namespace std;
 
 class cuenta {
@@ -13,19 +15,22 @@ class cuenta {
     string apellido;
     int anio;
     bool estado;
+    transaccion t[10];
+    int cant_transacciones = 0;
+    float saldo;
 public:
     cuenta(){};
-    cuenta(int _n_cliente, string _nombre, string _apellido, int _anio, bool _estado);
+    cuenta(int _n_cliente, string _nombre, string _apellido, int _anio, bool _estado, float _saldo);
     void set_n_cliente(int _n_cliente);
     int get_n_cliente();
-    void set_nombre(string _nombre);
-    string get_nombre();
-    void set_apellido(string _apellido);
-    string get_apellido();
     void set_anio(int _anio);
     int get_anio();
     void set_estado(bool _estado);
     bool get_estado();
+    void crear_extraccion(float canti_extraccion,int dia,int mes,int anio,int N);
+    float get_saldo();
+    void set_saldo(float _saldo);
+    void crear_deposito(float canti_deposito,int dia,int mes,int anio,int N);
 };
 
 

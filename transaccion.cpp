@@ -4,6 +4,7 @@
 
 #include "transaccion.h"
 #include <iostream>
+#pragma once
 using namespace std;
 
 transaccion::transaccion(int un_n_transaccion, int un_dia, int un_mes, int un_anio,float una_cantidad) {
@@ -41,4 +42,10 @@ float transaccion::get_cantidad() {
 }
 void transaccion::set_cantidad(float _cantidad){
     cantidad=_cantidad;
+}
+void transaccion::set_tipo(char _tipo) {
+    tipo= _tipo;
+}
+char transaccion::get_tipo() {
+    return tipo;
 }

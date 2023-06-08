@@ -7,11 +7,12 @@
 #include "transaccion.h"
 #include "transaccion.cpp"
 #include "clientes.h"
-
+#include "clientes.h"
+#pragma once
 
 class extracciones: public transaccion{
 public:
-    void extraer(float cant_extraccion);
+    void extraer(cuenta c,float cant_extraccion);
 };
 
 

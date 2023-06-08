@@ -6,6 +6,7 @@
 #define SISTEMA_DE_GESTION_ARCHIVO_H
 #include "fstream"
 #include "iostream"
+#pragma once
 using namespace std;
 
 class archivo {

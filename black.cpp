@@ -3,3 +3,6 @@
 //
 
 #include "black.h"
+black::black() {
+    limit_tarjeta=250000;
+}

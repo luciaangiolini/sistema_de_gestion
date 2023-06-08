@@ -3,3 +3,8 @@
 //
 
 #include "extracciones.h"
+
+void extracciones::extraer(cuenta c,float cant_extraccion) {
+    c.crear_extraccion(cant_extraccion);
+
+}

@@ -4,12 +4,11 @@
 #include "clientes.h"
 #include "cuenta.h"
 #include <iostream>
+#pragma
 using namespace std;
 
 clientes::clientes(int _n_cliente, string _nombre, string _apellido, int _anio, bool _estado, string _tipo) {
     cuenta_datos.set_n_cliente(_n_cliente);
-    cuenta_datos.set_nombre(_nombre);
-    cuenta_datos.set_apellido(_apellido);
     cuenta_datos.set_anio(_anio);
     cuenta_datos.set_estado(_estado);
     tipo = _tipo;
@@ -44,6 +43,7 @@ void clientes::start() {
             case 2:
                 break;
             case 3:
+
                 break;
             case 4:
                 break;
@@ -64,4 +64,22 @@ void clientes::start() {
                 break;
         }
     }
+}
+void clientes::set_nombre(string _nombre) {
+    nombre = _nombre;
+}
+string clientes::get_nombre() {
+    return nombre;
+}
+void clientes::set_apellido(string _apellido) {
+    apellido = _apellido;
+}
+string clientes::get_apellido() {
+    return apellido;
+}
+void clientes::set_tarjeta(float _limite) {
+    tarjeta = _limite;
+}
+float clientes::get_tarjeta() {
+    return tarjeta;
 }
