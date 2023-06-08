@@ -2,14 +2,14 @@
 // Created by Luchi on 30/5/2023.
 //
 #ifndef SISTEMA_DE_GESTION_CLIENTES_H
-#define SISTEMA_DE_GESTION_CLIENTES_H
+#define SISTEMA_DE_GESTION_CLIENTES_H \
+#include <iostream>
+#include <fstream>
 #include "cuenta.h"
 #include "transaccion.h"
 #include "black.h"
 #include "oro.h"
 #include "plata.h"
-#include <iostream>
-#include <fstream>
 #pragma
 using namespace std;
 
@@ -31,6 +31,7 @@ public:
     void start();
     void set_tarjeta (float _limite);
     float get_tarjeta ();
+    void alta_cliente (clientes *c,int n_clientes);
 };
 
 #endif //SISTEMA_DE_GESTION_CLIENTES_H

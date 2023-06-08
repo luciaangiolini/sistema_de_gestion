@@ -4,8 +4,8 @@
 
 #ifndef SISTEMA_DE_GESTION_PLATA_H
 #define SISTEMA_DE_GESTION_PLATA_H
-#include "clientes.h"
 #include <iostream>
+#include "clientes.h"
 using namespace std;
 
 class plata: public clientes{

@@ -9,7 +9,7 @@
 #pragma
 using namespace std;
 
-class cuenta {
+class cuenta{
     int n_cliente;
     string nombre;
     string apellido;
@@ -23,14 +23,20 @@ public:
     cuenta(int _n_cliente, string _nombre, string _apellido, int _anio, bool _estado, float _saldo);
     void set_n_cliente(int _n_cliente);
     int get_n_cliente();
+    void set_nombre(string _nombre);
+    string get_nombre();
+    void set_apellido(string _apellido);
+    string get_apellido();
     void set_anio(int _anio);
     int get_anio();
     void set_estado(bool _estado);
     bool get_estado();
-    void crear_extraccion(float canti_extraccion,int dia,int mes,int anio,int N);
+    /*Le saque los parametros para pedir los datos directamente en la funcion*/
+    static void crear_extraccion();
     float get_saldo();
     void set_saldo(float _saldo);
-    void crear_deposito(float canti_deposito,int dia,int mes,int anio,int N);
+    /*Le saque los parametros para pedir los datos directamente en la funcion*/
+    static void crear_deposito();
 };
 
 

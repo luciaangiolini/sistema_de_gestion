@@ -4,7 +4,7 @@
 
 #include "transaccion.h"
 #include <iostream>
-#pragma once
+#pragma
 using namespace std;
 
 transaccion::transaccion(int un_n_transaccion, int un_dia, int un_mes, int un_anio,float una_cantidad) {

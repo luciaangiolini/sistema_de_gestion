@@ -3,10 +3,11 @@
 //
 #include <iostream>
 #include "cuenta.h"
-#pragma once
 using namespace std;
 cuenta::cuenta(int _n_cliente, string _nombre, string _apellido, int _anio, bool _estado, float _saldo) {
     n_cliente = _n_cliente;
+    nombre = _nombre;
+    apellido = _apellido;
     anio = _anio;
     estado = _estado;
     saldo = _saldo;
@@ -18,7 +19,19 @@ int cuenta::get_n_cliente() {
     return n_cliente;
 }
 
-void cuenta::set_anio(int _anio) {
+void cuenta::set_nombre(string _nombre) {
+    nombre = _nombre;
+}
+string cuenta::get_nombre() {
+    return nombre;
+}
+void cuenta::set_apellido(string _apellido) {
+    apellido = _apellido;
+}
+string cuenta::get_apellido() {
+    return apellido;
+}
+void cuenta::set_anio( int _anio) {
     anio = _anio;
 }
 int cuenta::get_anio() {
@@ -30,56 +43,32 @@ void cuenta::set_estado(bool _estado) {
 bool cuenta::get_estado() {
     return estado;
 }
+void cuenta::set_saldo(float _saldo) {
+    saldo = _saldo;
+}
 float cuenta::get_saldo() {
     return saldo;
 }
 
-void cuenta::crear_extraccion(float canti_extraccion,int dia,int mes,int anio, int N) {
-    try {
-        if (canti_extraccion<=0){
-            throw "Error: El monto debe ser mayor que 0";
-        }
-        if (canti_extraccion > saldo){
-            throw "Error: fondos insuficientes";
-        }
-        saldo -=canti_extraccion;
-        cout<<"Se extrajo: "<<canti_extraccion<<"$ de la cuenta. Saldo actual: "<<saldo<<"$"<<endl;
-        t [cant_transacciones].set_cantidad(canti_extraccion);
-        t[cant_transacciones].set_anio(anio);
-        t[cant_transacciones].set_dia(dia);
-        t[cant_transacciones].set_mes(mes);
-        t[cant_transacciones].set_tipo('D');
-        t[cant_transacciones].set_num_t(N);
-        cant_transacciones++;
-
-    }catch (const char* error) {
-        cerr << error << endl;
-    }
-}
-void cuenta::set_saldo(float _saldo) {
-    saldo= _saldo;
-}
-void cuenta::crear_deposito(float canti_deposito,int dia,int mes,int anio,int N) {
-
-    try {
-        if (canti_deposito<=0){
-            throw "Error: El monto debe ser mayor que 0";
-        }
-        saldo +=canti_deposito;
-        cout<<"Ingrese dia, mes y anio en la que se realizo el deposito"<<endl;
-        cin >> dia >> mes >> anio;
-        cout<<"Se depositaron: "<<canti_deposito<<"$ en la cuenta. Saldo actual: "<<saldo<<"$"<<endl;
-        t [cant_transacciones].set_cantidad(canti_deposito);
-        t[cant_transacciones].set_anio(anio);
-        t[cant_transacciones].set_dia(dia);
-        t[cant_transacciones].set_mes(mes);
-        t[cant_transacciones].set_tipo('D');
-        t[cant_transacciones].set_num_t(N);
-        cant_transacciones++;
-
-    }catch (const char* error) {
-        cerr << error << endl;
-    }
+void cuenta::crear_deposito() {
+    int N; /*Numero de depósito?*/
+    float monto_deposito;
+    int _dia, _mes, _anio;
+    cout << "Ingrese monto a depositar: " << endl;
+    cin >> monto_deposito;
+    cout << "Ingrese dia, mes y anio: " << endl;
+    cin >> _dia, _mes, _anio;
+    //Completar para que le aumente la cantidad de plata en la cuenta y lo agregue al archivo
 }
 
+void cuenta::crear_extraccion() {
+    int N; /*Numero de extraccion?*/
+    float monto_extraccion;
+    int _dia, _mes, _anio;
+    cout << "Ingrese monto a depositar: " << endl;
+    cin >> monto_extraccion;
+    cout << "Ingrese dia, mes y anio: " << endl;
+    cin >> _dia, _mes, _anio;
+    //Completar para que le reste la cantidad de plata en la cuenta y lo agregue al archivo
+}
 

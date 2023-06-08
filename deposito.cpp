@@ -4,5 +4,5 @@
 
 #include "deposito.h"
 void deposito::depositar(cuenta c, float cant_deposito) {
-    c.crear_deposito(cant_deposito);
+    c.crear_deposito();
 }
