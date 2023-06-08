@@ -30,10 +30,11 @@ public:
     int get_anio();
     void set_estado(bool _estado);
     bool get_estado();
-    static void crear_extraccion(float monto_deposito, int N, int _dia, int _mes, int _anio);
+    void crear_extraccion(float monto_deposito, int N, int _dia, int _mes, int _anio);
     float get_saldo();
     void set_saldo(float _saldo);
-    static void crear_deposito(float monto_extraccion, int N, int _dia, int _mes, int _anio);
+    void crear_deposito(float monto_extraccion, int N, int _dia, int _mes, int _anio);
+    void cambiar_estado();
 };
 
 

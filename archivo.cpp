@@ -25,8 +25,9 @@ void archivo::create_fileC() {
         cout<<"Error al crear el archivo"<<endl;
     }
 }
-void archivo::aniadir_cliente(int n_cliente, string nombre, string apellido, string tipo, string anio_incorporacion,
-                              bool estado) {
+void archivo::aniadir_cliente(int n_cliente, string nombre, string apellido, string tipo, int anio_incorporacion,
+                              string estado) {
+
     file_clientes <<  n_cliente<<"             //   " << nombre<<"               //   "<<apellido<<"      //   "
                   <<tipo<<"     //   " << anio_incorporacion <<"    //   " << estado <<endl;
 }

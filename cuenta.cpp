@@ -50,11 +50,55 @@ float cuenta::get_saldo() {
     return saldo;
 }
 
-void cuenta::crear_deposito(float monto_deposito, int N, int _dia, int _mes, int _anio) {
+void cuenta::crear_extraccion(float canti_extraccion,int dia,int mes,int anio, int N) {
+        try {
+            if (canti_extraccion <= 0) {
+                throw "Error: El monto debe ser mayor que 0";
+            }
+            if (canti_extraccion > saldo) {
+                throw "Error: fondos insuficientes";
+            }
+            saldo -= canti_extraccion;
+            cout << "Se extrajo: " << canti_extraccion << "$ de la cuenta. Saldo actual: " << saldo << "$" << endl;
+            t[cant_transacciones].set_cantidad(canti_extraccion);
+            t[cant_transacciones].set_anio(anio);
+            t[cant_transacciones].set_dia(dia);
+            t[cant_transacciones].set_mes(mes);
+            t[cant_transacciones].set_tipo('D');
+            t[cant_transacciones].set_num_t(N);
+            cant_transacciones++;
+
+        } catch (const char *error) {
+            cerr << error << endl;
+        }
+}
+
+void cuenta::crear_deposito(float canti_deposito,int dia,int mes,int anio,int N) {
+
+    try {
+        if (canti_deposito<=0){
+            throw "Error: El monto debe ser mayor que 0";
+        }
+        saldo +=canti_deposito;
+        cout<<"Ingrese dia, mes y anio en la que se realizo el deposito"<<endl;
+        cin >> dia >> mes >> anio;
+        cout<<"Se depositaron: "<<canti_deposito<<"$ en la cuenta. Saldo actual: "<<saldo<<"$"<<endl;
+        t [cant_transacciones].set_cantidad(canti_deposito);
+        t[cant_transacciones].set_anio(anio);
+        t[cant_transacciones].set_dia(dia);
+        t[cant_transacciones].set_mes(mes);
+        t[cant_transacciones].set_tipo('D');
+        t[cant_transacciones].set_num_t(N);
+        cant_transacciones++;
+
+    }catch (const char* error) {
+        cerr << error << endl;
+    }
+}
+
+void cuenta::cambiar_estado() {
+        estado = false;
 
 }
 
-void cuenta::crear_extraccion(float monto_extraccion, int N, int _dia, int _mes, int _anio) {
-
-}
 

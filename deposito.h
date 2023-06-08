@@ -10,7 +10,7 @@
 
 class deposito: public transaccion{
 public:
-    void depositar(cuenta c,float cant_deposito);
+    void depositar(cuenta c, float canti_deposito,int dia,int mes,int anio,int N);
 };
 
 

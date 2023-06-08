@@ -10,7 +10,7 @@
 
 class extracciones: public transaccion{
 public:
-    void extraer(cuenta c,float cant_extraccion);
+    void extraer(cuenta c,float cant_extraccion, int dia,int mes,int anio,int N);
 };
 
 
