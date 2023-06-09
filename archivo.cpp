@@ -37,3 +37,6 @@ void archivo::close_cli() {
 void archivo::close_tran() {
     file_transacciones.close();
 }
+void archivo::open_cli() {
+    ifstream file_transacciones;
+}

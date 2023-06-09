@@ -20,6 +20,8 @@ public:
     void aniadir_cliente(int n_cliente, string nombre, string apellido, string tipo,int anio_incorporacion,string estado);
     void close_tran();
     void close_cli();
+    void open_cli();
+    void open_tran();
 
 };
 

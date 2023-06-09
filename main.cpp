@@ -37,7 +37,7 @@ int main() {
             case 1:{
                 string _nombre, _apellido;
                 string _tipo;
-                int _n_cliente, _anio;
+                int  _anio;
                 float _saldo;
                 bool estado= true;
                 string estado2;
@@ -46,23 +46,20 @@ int main() {
                 cin >> _nombre >> _apellido >> _saldo >> _anio;
                 alta_cliente(&c[N_clientes-1], N_clientes, _nombre, _apellido, _anio, _saldo );
                 c->cuenta_datos.set_estado(estado);
-
-                if (estado==true){
                     estado2 = "Activo";
-                }else if (estado== false){
-                    estado2 = "Inactivo";
-                }
                 _tipo = c[N_clientes-1].get_tipo();
-                files.aniadir_cliente(N_clientes, _nombre, _apellido, _tipo, _anio, estado2);
-                files.close_cli();
-                N_clientes++;
+                files.open_cli();
+                    files.aniadir_cliente(N_clientes, _nombre, _apellido, _tipo, _anio, estado2);
+                    files.close_cli();
+                    N_clientes++;
+
                 alta=true;
+
                 break;
             }
             case 2: {
                 string nombre1, apellido1, tipo1, estado2;
                 int n_cliente1, anio1;
-                float saldo1;
                 bool estado1;
                 int num;
                 if (alta){
@@ -73,20 +70,20 @@ int main() {
                 cin >>num;
                 c[num-1].cuenta_datos.cambiar_estado();
                 files.create_fileC();
-                    if (c[num - 1].cuenta_datos.get_estado()){
-                        estado2 = "Activo";
-                    }else{
-                        estado2 = "Inactivo";
-                    }
+
                     cout << c[num-1].cuenta_datos.get_estado();
                     cout<< "hola"<<endl;
-                for (int i = 0; i < N_clientes; ++i) {
+                for (int i = 0; i < N_clientes-1; ++i) {
                     nombre1 = c[i].get_nombre();
                     apellido1 = c[i].get_apellido();
                     tipo1 = c[i].get_tipo();
                     n_cliente1 = i + 1;
                     anio1 = c[i].cuenta_datos.get_anio();
-                    saldo1 = c[i].cuenta_datos.get_saldo();
+                    if (c[i].cuenta_datos.get_estado()){
+                        estado2 = "Activo";
+                    }else{
+                        estado2 = "Inactivo";
+                    }
                     files.aniadir_cliente(n_cliente1, nombre1, apellido1, tipo1, anio1, estado2);
                 }
                 } else {
