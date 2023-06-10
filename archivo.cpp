@@ -25,10 +25,9 @@ void archivo::create_fileC() {
         cout<<"Error al crear el archivo"<<endl;
     }
 }
-void archivo::aniadir_cliente(int n_cliente, string nombre, string apellido, string tipo, int anio_incorporacion,
-                              string estado) {
+void archivo::aniadir_cliente(int n_cliente, const string nombre, string apellido, string tipo, int anio_incorporacion, string estado) {
 
-    file_clientes <<  n_cliente<<"             //   " << nombre<<"               //   "<<apellido<<"      //   "
+    file_clientes <<  n_cliente<<"               //   " << nombre<<"         //   "<<apellido<<"      //   "
                   <<tipo<<"     //   " << anio_incorporacion <<"    //   " << estado <<endl;
 }
 void archivo::close_cli() {
@@ -38,5 +37,8 @@ void archivo::close_tran() {
     file_transacciones.close();
 }
 void archivo::open_cli() {
+    ifstream file_clientes;
+}
+void archivo::open_tran() {
     ifstream file_transacciones;
 }

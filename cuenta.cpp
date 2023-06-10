@@ -80,8 +80,8 @@ void cuenta::crear_deposito(float canti_deposito,int dia,int mes,int anio,int N)
             throw "Error: El monto debe ser mayor que 0";
         }
         saldo +=canti_deposito;
-        cout<<"Ingrese dia, mes y anio en la que se realizo el deposito"<<endl;
-        cin >> dia >> mes >> anio;
+        //cout<<"Ingrese dia, mes y anio en la que se realizo el deposito"<<endl;
+        //cin >> dia >> mes >> anio;
         cout<<"Se depositaron: "<<canti_deposito<<"$ en la cuenta. Saldo actual: "<<saldo<<"$"<<endl;
         t [cant_transacciones].set_cantidad(canti_deposito);
         t[cant_transacciones].set_anio(anio);

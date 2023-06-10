@@ -17,7 +17,7 @@ public:
     void create_fileT();
     void create_fileC();
     void aniadir_transaccion(int n_cliente, int n_transaccion, int dia,int mes, int anio,float cantidad,char tipo);
-    void aniadir_cliente(int n_cliente, string nombre, string apellido, string tipo,int anio_incorporacion,string estado);
+    void aniadir_cliente(int n_cliente, const string nombre, string apellido, string tipo,int anio_incorporacion,string estado);
     void close_tran();
     void close_cli();
     void open_cli();

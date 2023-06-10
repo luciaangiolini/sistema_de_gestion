@@ -26,10 +26,8 @@ public:
     string get_apellido();
     void set_tipo(string _tipo);
     string get_tipo();
-    void start();
     void set_tarjeta (float _limite);
-    float get_tarjeta ();
-    void alta_cliente (clientes *c,int n_clientes);
+    float get_tarjeta();
 };
 
 #endif //SISTEMA_DE_GESTION_CLIENTES_H
