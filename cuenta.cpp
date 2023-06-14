@@ -59,7 +59,7 @@ void cuenta::crear_extraccion(float canti_extraccion,int dia,int mes,int anio, i
                 throw "Error: fondos insuficientes";
             }
             saldo -= canti_extraccion;
-            cout << "Se extrajo: " << canti_extraccion << "$ de la cuenta. Saldo actual: " << saldo << "$" << endl;
+            cout << "Se extrajo: $" << canti_extraccion << " de la cuenta. Saldo actual: $" << saldo << endl;
             t[cant_transacciones].set_cantidad(canti_extraccion);
             t[cant_transacciones].set_anio(anio);
             t[cant_transacciones].set_dia(dia);

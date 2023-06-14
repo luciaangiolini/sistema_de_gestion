@@ -57,14 +57,78 @@ int main() {
                 float _saldo;
                 bool estado = true;
                 string estado2;
-                cout << "Ingrese nombre: " << endl;
-                cin >> _nombre;
-                cout << "Ingrese apellido: " << endl;
-                cin >> _apellido;
-                cout << "Ingrese el saldo: " << endl;
-                cin >> _saldo;
-                cout << "Ingrese el anio de incorporacion: " << endl;
-                cin >> _anio;
+                bool is_valid_1=false;
+                bool is_valid_2=false;
+                bool is_valid_3=false;
+                bool is_valid_4=false;
+
+                do {
+                    cout << "Ingrese nombre: " << endl;
+                    try {
+                        cin >> _nombre;
+                        for (char c : _nombre) {
+                            if (!isalpha(c)) {
+                                throw runtime_error("Error. Ingrese el nombre con letras :)");
+                            }
+                        }
+                        is_valid_1=true;
+                    }
+                    catch (const exception& e) {
+                        cerr << e.what() << endl;
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    }
+                } while (!is_valid_1);
+                do {
+                    cout << "Ingrese apellido: " << endl;
+                    try {
+                        cin >> _apellido;
+                        for (char c : _apellido) {
+                            if (!isalpha(c)) {
+                                throw runtime_error("Error. Ingrese el apellido con letras :)");
+                            }
+                        }
+                        is_valid_2=true;
+                    }
+                    catch (const exception& e) {
+                        cerr << e.what() << endl;
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    }
+                } while (!is_valid_2);
+                do {
+                    cout << "Ingrese el saldo: " << endl;
+
+                    try {
+                        cin >> _saldo;
+                        if (cin.fail()) {
+                            throw runtime_error("Error: Entrada invalida. Debe ingresar un numero :)");
+                        }
+                        is_valid_3=true;
+                    }
+                    catch (const exception &e) {
+                        cerr << e.what() << endl;
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    }
+                } while (!is_valid_3);
+
+                do {
+                    cout << "Ingrese el anio de incorporacion: " << endl;
+                    try {
+                        cin >> _anio;
+                        if (cin.fail()) {
+                            throw runtime_error("Error: Entrada invalida. Debe ingresar un numero entero.");
+                        }
+                        is_valid_4=true;
+                    }
+                    catch (const exception &e) {
+                        cerr << e.what() << endl;
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    }
+                } while (!is_valid_4);
+
                 alta_cliente(&c[N_clientes - 1], N_clientes, _nombre, _apellido, _anio, _saldo);
                 c[N_clientes - 1].cuenta_datos.set_estado(estado);
                 estado2 = "Activo";
@@ -81,12 +145,26 @@ int main() {
                 int n_cliente1, anio1;
                 bool estado1;
                 int num;
+                bool is_valid=false;
                 if (alta) {
                     for (int i = 0; i < N_clientes - 1; ++i) {
                         cout << i + 1 << "  " << c[i].get_nombre() << " " << c[i].get_apellido() << endl;
                     }
-                    cout << "Que cliente quiere dar de baja?" << endl;
-                    cin >> num;
+                    do {
+                        cout << "Que cliente quiere dar de baja?" << endl;
+                        try {
+                            cin >> num;
+                            if (cin.fail()) {
+                                throw runtime_error("Error: Entrada invalida. Debe ingresar un numero entero.");
+                            }
+                            is_valid=true;
+                        }
+                        catch (const exception &e) {
+                            cerr << e.what() << endl;
+                            cin.clear();
+                            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        }
+                    } while (!is_valid);
                     c[num - 1].cuenta_datos.cambiar_estado();
                     files.create_fileC();
                     for (int i = 0; i < N_clientes - 1; ++i) {
@@ -114,15 +192,91 @@ int main() {
                 int num;
                 float monto_dep;
                 int dia, mes, anio;
+                bool is_valid_1= false;
+                bool is_valid_2=false;
+                bool is_valid_3=false;
+                bool is_valid_4=false;
+                bool is_valid_5=false;
+
                 for (int i = 0; i < N_clientes - 1; ++i) {
                     cout << i + 1 << "  " << c[i].get_nombre() << " " << c[i].get_apellido() << endl;
                 }
-                cout << "A que cliente desea generar un deposito?" << endl;
-                cin >> num;
-                cout << "Ingrese monto a depositar: " << endl;
-                cin >> monto_dep;
-                cout << "Ingrese dia, mes y anio: " << endl;
-                cin >> dia >> mes >> anio;
+                do {
+                    cout << "A que cliente desea generar un deposito?" << endl;
+                    try {
+                        cin >> num;
+                        if (cin.fail()) {
+                            throw runtime_error("Error: Entrada invalida. Debe ingresar un numero entero:)");
+                        }
+                        is_valid_1=true;
+                    }
+                    catch (const exception &e) {
+                        cerr << e.what() << endl;
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    }
+                } while (!is_valid_1);
+                do {
+                    cout << "Ingrese monto a depositar: " << endl;
+                    try {
+                        cin >> monto_dep;
+                        if (cin.fail()) {
+                            throw runtime_error("Error: Entrada invalida. Debe ingresar un numero entero:)");
+                        }
+                        is_valid_2=true;
+                    }
+                    catch (const exception &e) {
+                        cerr << e.what() << endl;
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    }
+                } while (!is_valid_2);
+                do {
+                    cout << "Ingrese dia (hoy): " << endl;
+                    try {
+                        cin >> dia;
+                        if (cin.fail()) {
+                            throw runtime_error("Error: Entrada invalida. Debe ingresar un numero entero:)");
+                        }
+                        is_valid_3=true;
+                    }
+                    catch (const exception &e) {
+                        cerr << e.what() << endl;
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    }
+                } while (!is_valid_3);
+                do {
+                    cout << "Ingrese mes (hoy): " << endl;
+                    try {
+                        cin >> mes ;
+                        if (cin.fail()) {
+                            throw runtime_error("Error: Entrada invalida. Debe ingresar un numero entero:)");
+                        }
+                        is_valid_4=true;
+                    }
+                    catch (const exception &e) {
+                        cerr << e.what() << endl;
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    }
+                } while (!is_valid_4);
+                do {
+                    cout << "Ingrese anio (hoy): " << endl;
+                    try {
+                        cin >> anio;
+                        if (cin.fail()) {
+                            throw runtime_error("Error: Entrada invalida. Debe ingresar un numero entero:)");
+                        }
+                        is_valid_5=true;
+                    }
+                    catch (const exception &e) {
+                        cerr << e.what() << endl;
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    }
+                } while (!is_valid_5);
+
                 d[num - 1].depositar(c[num - 1].cuenta_datos, monto_dep, dia, mes, anio, N);
                 files.aniadir_transaccion(num - 1, N, dia, mes, anio, monto_dep, 'D');
                 break;
@@ -131,28 +285,117 @@ int main() {
                 int num;
                 float monto_ext;
                 int dia, mes, anio;
+                bool is_valid_1=false;
+                bool is_valid_2=false;
+                bool is_valid_3=false;
+                bool is_valid_4=false;
+                bool is_valid_5=false;
                 for (int i = 0; i < N_clientes - 1; ++i) {
                     cout << i + 1 << "  " << c[i].get_nombre() << " " << c[i].get_apellido() << endl;
                 }
-                cout << "A que cliente desea generar una extraccion?" << endl;
-                cin >> num;
-                cout << "Ingrese monto a extraer: " << endl;
-                cin >> monto_ext;
-                cout << "Ingrese dia, mes y anio: " << endl;
-                cin >> dia >> mes >> anio;
+                do {
+                    cout << "A que cliente desea generar una extraccion?" << endl;
+                    try {
+                        cin >> num;
+                        if (cin.fail()) {
+                            throw runtime_error("Error: Entrada invalida. Debe ingresar un numero entero:)");
+                        }
+                        is_valid_1=true;
+                    }
+                    catch (const exception &e) {
+                        cerr << e.what() << endl;
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    }
+                } while (!is_valid_1);
+                do {
+                    cout << "Ingrese monto a extraer: " << endl;
+                    try {
+                        cin >> monto_ext;
+                        if (cin.fail()) {
+                            throw runtime_error("Error: Entrada invalida. Debe ingresar un numero :)");
+                        }
+                        is_valid_2=true;
+                    }
+                    catch (const exception &e) {
+                        cerr << e.what() << endl;
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    }
+                } while (!is_valid_2);
+                do {
+                    cout << "Ingrese dia (hoy): " << endl;
+                    try {
+                        cin >> dia;
+                        if (cin.fail()) {
+                            throw runtime_error("Error: Entrada invalida. Debe ingresar un numero entero:)");
+                        }
+                        is_valid_3=true;
+                    }
+                    catch (const exception &e) {
+                        cerr << e.what() << endl;
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    }
+                } while (!is_valid_3);
+                do {
+                    cout << "Ingrese mes (hoy): " << endl;
+                    try {
+                        cin >> mes ;
+                        if (cin.fail()) {
+                            throw runtime_error("Error: Entrada invalida. Debe ingresar un numero entero:)");
+                        }
+                        is_valid_4=true;
+                    }
+                    catch (const exception &e) {
+                        cerr << e.what() << endl;
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    }
+                } while (!is_valid_4);
+                do {
+                    cout << "Ingrese anio (hoy): " << endl;
+                    try {
+                        cin >> anio;
+                        if (cin.fail()) {
+                            throw runtime_error("Error: Entrada invalida. Debe ingresar un numero entero:)");
+                        }
+                        is_valid_5=true;
+                    }
+                    catch (const exception &e) {
+                        cerr << e.what() << endl;
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    }
+                } while (!is_valid_5);
+
                 e[num - 1].extraer(c[num - 1].cuenta_datos, monto_ext, dia, mes, anio, N);
                 files.aniadir_transaccion(num - 1, N, dia, mes, anio, monto_ext, 'E');
                 break;
             }
             case 5: {
                 int num;
+                bool is_valid=false;
                 for (int i = 0; i < N_clientes - 1; ++i) {
                     cout << "Cliente N " << c[i].cuenta_datos.get_n_cliente() << " --> " << c[i].get_nombre()
                          << " "
                          << c[i].get_apellido() << endl;
                 }
-                cout << "Indique con el numero del cliente para consultar sus respectivos datos: " << endl;
-                cin >> num;
+                do {
+                    cout << "Indique con el numero del cliente para consultar sus respectivos datos: " << endl;
+                    try {
+                        cin >> num;
+                        if (cin.fail()) {
+                            throw runtime_error("Error: Entrada invalida. Debe ingresar un numero entero:)");
+                        }
+                        is_valid=true;
+                    }
+                    catch (const exception &e) {
+                        cerr << e.what() << endl;
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    }
+                } while (!is_valid);
                 cout << "Datos: " << endl;
                 cout << "Cliente N --> " << c[num - 1].cuenta_datos.get_n_cliente() << endl;
                 cout << "Nombre --> " << c[num - 1].get_nombre() << " " << c[num - 1].get_apellido() << endl;
