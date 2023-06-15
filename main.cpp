@@ -9,12 +9,25 @@
 #include "extracciones.h"
 using namespace std;
 void alta_cliente (clientes *c, int n_clientes, string _nombre, string _apellido, int _anio, float _saldo);
+/*
+template<typename T>
+T getInputInRange(const T& input, const T& minVal, const T& maxVal) {
+    if (input >= minVal && input <= maxVal) {
+        return input;
+    } else {
+        cout << "Valor invalido. Fuera del rango. Por favor, ingrese nuevamente: " << endl;
+        T newInput;
+        cin >> newInput;
+        return getInputInRange<T>(newInput, minVal, maxVal);
+    }
+}*/
 int main() {
     deposito d[6];
     extracciones e[6];
     archivo files;
     files.create_fileT();
     files.create_fileC();
+    //files.aniadir_transaccion(32, 2, 6, 10, 2019, 3500, 'E');
     int opcion;
     clientes c[6];
     bool alta = false;
@@ -37,6 +50,7 @@ int main() {
                 cout << "11 - Salir" << endl << endl << endl;
                 cout << "Que desea hacer hoy? (Indique con el numero de cada opcion)" << endl;
                 cin >> opcion;
+                //getInputInRange(opcion, 1, 11);
                 if (cin.fail()) {
                     throw runtime_error("Error: Entrada invalida. Debe ingresar un numero entero.");
                 }
@@ -132,7 +146,9 @@ int main() {
                 c[N_clientes - 1].cuenta_datos.set_estado(estado);
                 estado2 = "Activo";
                 _tipo = c[N_clientes - 1].get_tipo();
+                files.open_cli();
                 files.aniadir_cliente(N_clientes, _nombre, _apellido, _tipo, _anio, estado2);
+                files.close_cli();
                 N_clientes++;
                 alta = true;
                 break;
@@ -164,6 +180,7 @@ int main() {
                     } while (!is_valid);
                     c[num - 1].cuenta_datos.cambiar_estado();
                     files.create_fileC();
+
                     nombre1 = c[0].get_nombre();
                     apellido1 = c[0].get_apellido();
                     tipo1 = c[0].get_tipo();
@@ -175,6 +192,7 @@ int main() {
                         estado2 = "Inactivo";
                     }
                     files.reescribir_cliente(n_cliente1, nombre1, apellido1, tipo1, anio1, estado2);
+
 
                     for (int i = 1; i < N_clientes - 1; ++i) {
                         nombre1 = c[i].get_nombre();
@@ -334,7 +352,7 @@ int main() {
                     }
                 } while (!is_valid_2);
                 do {
-                    cout << "Ingrese dia : " << endl;
+                    cout << "Ingrese dia: " << endl;
                     try {
                         cin >> dia;
                         if (cin.fail()) {
@@ -349,7 +367,7 @@ int main() {
                     }
                 } while (!is_valid_3);
                 do {
-                    cout << "Ingrese mes : " << endl;
+                    cout << "Ingrese mes: " << endl;
                     try {
                         cin >> mes ;
                         if (cin.fail()) {
@@ -364,7 +382,7 @@ int main() {
                     }
                 } while (!is_valid_4);
                 do {
-                    cout << "Ingrese anio : " << endl;
+                    cout << "Ingrese anio: " << endl;
                     try {
                         cin >> anio;
                         if (cin.fail()) {
@@ -442,6 +460,8 @@ int main() {
                 break;
             }
             case 7: {
+                //Consultar transacciones por numero de clientes
+
                 int num;
                 bool is_valid=false;
                 for (int i = 0; i < N_clientes - 1; ++i) {
@@ -490,21 +510,21 @@ int main() {
                          "No tiene registrada ninguna transacción " <<endl;
                 }*/
                 break;
+
+                break;
             }
-
-                //Consultar transacciones por numero de clientes
-
             case 8: {
                 //Generar informe de transacciones por6 meses
                 break;
             }
             case 9: {
                 //Generar informe de transacciones por 1 anio
+                //c->cuenta_datos.mostrar_transacciones_un_anio();
                 break;
             }
             case 10: {
-                files.mostrar_transacciones();
                 //Generar informe total de transacciones
+                files.mostrar_transacciones();
                 break;
             }
             case 11:
@@ -535,3 +555,4 @@ void alta_cliente(clientes *c, int n_clientes, string _nombre, string _apellido,
         c->set_tarjeta(0);
     }
 }
+

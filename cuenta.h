@@ -40,6 +40,7 @@ public:
     int get_cant_transacciones();
     void aumentar_cantT();
     int get_cantT();
+    //void mostrar_transacciones_un_anio();
 };
 
 
