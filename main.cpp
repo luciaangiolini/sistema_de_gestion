@@ -528,6 +528,7 @@ int main() {
                 break;
             }
             case 11:
+                cout << "Gracias por elegirnos! Volve pronto, siempre para vos" << endl;
                 exit(EXIT_SUCCESS);
                 break;
         }
