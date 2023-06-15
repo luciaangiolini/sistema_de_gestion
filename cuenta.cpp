@@ -4,6 +4,7 @@
 #include <iostream>
 #include "cuenta.h"
 using namespace std;
+
 cuenta::cuenta(int _n_cliente, string _nombre, string _apellido, int _anio, bool _estado, float _saldo) {
     n_cliente = _n_cliente;
     nombre = _nombre;
@@ -34,6 +35,7 @@ string cuenta::get_apellido() {
 void cuenta::set_anio( int _anio) {
     anio = _anio;
 }
+int cuenta::cantT =0;
 int cuenta::get_anio() {
     return anio;
 }
@@ -60,17 +62,19 @@ void cuenta::crear_extraccion(float canti_extraccion,int dia,int mes,int anio, i
             }
             saldo -= canti_extraccion;
             cout << "Se extrajo: $" << canti_extraccion << " de la cuenta. Saldo actual: $" << saldo << endl;
-            t[cant_transacciones].set_cantidad(canti_extraccion);
-            t[cant_transacciones].set_anio(anio);
-            t[cant_transacciones].set_dia(dia);
-            t[cant_transacciones].set_mes(mes);
-            t[cant_transacciones].set_tipo('D');
-            t[cant_transacciones].set_num_t(N);
-            cant_transacciones++;
-
+            t[cantT].set_cantidad(canti_extraccion);
+            t[cantT].set_anio(anio);
+            t[cantT].set_dia(dia);
+            t[cantT].set_mes(mes);
+            t[cantT].set_tipo('D');
+            t[cantT].set_num_t(N);
+            cantT++;
         } catch (const char *error) {
             cerr << error << endl;
         }
+}
+int cuenta::get_cant_transacciones() {
+    return cant_transacciones;
 }
 
 void cuenta::crear_deposito(float canti_deposito,int dia,int mes,int anio,int N) {
@@ -83,13 +87,13 @@ void cuenta::crear_deposito(float canti_deposito,int dia,int mes,int anio,int N)
         //cout<<"Ingrese dia, mes y anio en la que se realizo el deposito"<<endl;
         //cin >> dia >> mes >> anio;
         cout<<"Se depositaron: "<<canti_deposito<<"$ en la cuenta. Saldo actual: "<<saldo<<"$"<<endl;
-        t [cant_transacciones].set_cantidad(canti_deposito);
-        t[cant_transacciones].set_anio(anio);
-        t[cant_transacciones].set_dia(dia);
-        t[cant_transacciones].set_mes(mes);
-        t[cant_transacciones].set_tipo('D');
-        t[cant_transacciones].set_num_t(N);
-        cant_transacciones++;
+        t [cantT].set_cantidad(canti_deposito);
+        t[cantT].set_anio(anio);
+        t[cantT].set_dia(dia);
+        t[cantT].set_mes(mes);
+        t[cantT].set_tipo('D');
+        t[cantT].set_num_t(N);
+        cantT++;
 
     }catch (const char* error) {
         cerr << error << endl;
@@ -100,5 +104,9 @@ void cuenta::cambiar_estado() {
         estado = false;
 
 }
-
-
+void cuenta::aumentar_cantT()  {
+    cantT++;
+}
+int cuenta::get_cantT(){
+    return cantT;
+}

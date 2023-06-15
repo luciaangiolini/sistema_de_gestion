@@ -22,6 +22,8 @@ public:
     void close_cli();
     void open_cli();
     void open_tran();
+    void reescribir_cliente (int n_cliente, const string nombre, string apellido, string tipo,int anio_incorporacion,string estado);
+    void mostrar_transacciones ();
 
 };
 

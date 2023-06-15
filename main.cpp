@@ -15,7 +15,6 @@ int main() {
     archivo files;
     files.create_fileT();
     files.create_fileC();
-    files.aniadir_transaccion(32, 2, 6, 10, 2019, 3500, 'E');
     int opcion;
     clientes c[6];
     bool alta = false;
@@ -133,9 +132,7 @@ int main() {
                 c[N_clientes - 1].cuenta_datos.set_estado(estado);
                 estado2 = "Activo";
                 _tipo = c[N_clientes - 1].get_tipo();
-                files.open_cli();
                 files.aniadir_cliente(N_clientes, _nombre, _apellido, _tipo, _anio, estado2);
-                files.close_cli();
                 N_clientes++;
                 alta = true;
                 break;
@@ -167,7 +164,19 @@ int main() {
                     } while (!is_valid);
                     c[num - 1].cuenta_datos.cambiar_estado();
                     files.create_fileC();
-                    for (int i = 0; i < N_clientes - 1; ++i) {
+                    nombre1 = c[0].get_nombre();
+                    apellido1 = c[0].get_apellido();
+                    tipo1 = c[0].get_tipo();
+                    n_cliente1 = 1;
+                    anio1 = c[0].cuenta_datos.get_anio();
+                    if (c[0].cuenta_datos.get_estado()) {
+                        estado2 = "Activo";
+                    } else {
+                        estado2 = "Inactivo";
+                    }
+                    files.reescribir_cliente(n_cliente1, nombre1, apellido1, tipo1, anio1, estado2);
+
+                    for (int i = 1; i < N_clientes - 1; ++i) {
                         nombre1 = c[i].get_nombre();
                         apellido1 = c[i].get_apellido();
                         tipo1 = c[i].get_tipo();
@@ -232,7 +241,7 @@ int main() {
                     }
                 } while (!is_valid_2);
                 do {
-                    cout << "Ingrese dia (hoy): " << endl;
+                    cout << "Ingrese dia: " << endl;
                     try {
                         cin >> dia;
                         if (cin.fail()) {
@@ -247,7 +256,7 @@ int main() {
                     }
                 } while (!is_valid_3);
                 do {
-                    cout << "Ingrese mes (hoy): " << endl;
+                    cout << "Ingrese mes: " << endl;
                     try {
                         cin >> mes ;
                         if (cin.fail()) {
@@ -262,7 +271,7 @@ int main() {
                     }
                 } while (!is_valid_4);
                 do {
-                    cout << "Ingrese anio (hoy): " << endl;
+                    cout << "Ingrese anio: " << endl;
                     try {
                         cin >> anio;
                         if (cin.fail()) {
@@ -278,7 +287,8 @@ int main() {
                 } while (!is_valid_5);
 
                 d[num - 1].depositar(c[num - 1].cuenta_datos, monto_dep, dia, mes, anio, N);
-                files.aniadir_transaccion(num - 1, N, dia, mes, anio, monto_dep, 'D');
+                files.aniadir_transaccion(num , N, dia, mes, anio, monto_dep, 'D');
+                N++;
                 break;
             }
             case 4: {
@@ -324,7 +334,7 @@ int main() {
                     }
                 } while (!is_valid_2);
                 do {
-                    cout << "Ingrese dia (hoy): " << endl;
+                    cout << "Ingrese dia : " << endl;
                     try {
                         cin >> dia;
                         if (cin.fail()) {
@@ -339,7 +349,7 @@ int main() {
                     }
                 } while (!is_valid_3);
                 do {
-                    cout << "Ingrese mes (hoy): " << endl;
+                    cout << "Ingrese mes : " << endl;
                     try {
                         cin >> mes ;
                         if (cin.fail()) {
@@ -354,7 +364,7 @@ int main() {
                     }
                 } while (!is_valid_4);
                 do {
-                    cout << "Ingrese anio (hoy): " << endl;
+                    cout << "Ingrese anio : " << endl;
                     try {
                         cin >> anio;
                         if (cin.fail()) {
@@ -370,7 +380,8 @@ int main() {
                 } while (!is_valid_5);
 
                 e[num - 1].extraer(c[num - 1].cuenta_datos, monto_ext, dia, mes, anio, N);
-                files.aniadir_transaccion(num - 1, N, dia, mes, anio, monto_ext, 'E');
+                files.aniadir_transaccion(num , N, dia, mes, anio, monto_ext, 'E');
+                N++;
                 break;
             }
             case 5: {
@@ -431,10 +442,58 @@ int main() {
                 break;
             }
             case 7: {
-                //Consultar transacciones por numero de clientes
+                int num;
+                bool is_valid=false;
+                for (int i = 0; i < N_clientes - 1; ++i) {
+                    cout << "Cliente N " << c[i].cuenta_datos.get_n_cliente() << " --> " << c[i].get_nombre()
+                         << " "
+                         << c[i].get_apellido() << endl;
+                }
+                do {
+                    cout << "Indique con el numero del cliente para ver sus transferencias: " << endl;
+                    try {
+                        cin >> num;
+                        if (cin.fail()) {
+                            throw runtime_error("Error: Entrada invalida. Debe ingresar un numero entero:)");
+                        }
+                        is_valid=true;
+                    }
+                    catch (const exception &e) {
+                        cerr << e.what() << endl;
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    }
+                } while (!is_valid);
+                /*
+                cout << "Datos: " << endl;
+                cout << "Transacciones correspondientes al cliente N --> " << c[num - 1].cuenta_datos.get_n_cliente() <<": "<< c[num - 1].get_nombre()<<c[num - 1].get_apellido()<< endl;
 
+                int fin;
+                fin = c[num-1].cuenta_datos.get_cant_transacciones();
+                cout << c [num-1].cuenta_datos.get_cant_transacciones() << endl;
+
+                int fin;
+                fin= c[num-1].cuenta_datos.get_cantT();
+                cout<<c[num-1].cuenta_datos.get_cantT();
+                    if (fin != 0) {
+                    for (int i = 0; i < fin; ++i) {
+                        cout << "N de transaccion: --> " << c[num - 1].cuenta_datos.t[i].get_num_t();
+                        cout << "Tipo de transaccion --> " << c[num - 1].cuenta_datos.t[i].get_tipo() << endl;
+                        cout << "Monto de la transaccion -->" << c[num-1].cuenta_datos.t[i].get_cantidad()<<"$"<<endl;
+                        cout << "Fecha de transaccion --> " << c[num - 1].cuenta_datos.t[i].get_dia() << "/"
+                             << c[num - 1].cuenta_datos.t[i].get_mes() << "/" << c[num - 1].cuenta_datos.t[i].get_anio()
+                             << endl;
+                    }
+                } else{
+                    cout << "El cliente N --> " << c[num - 1].cuenta_datos.get_n_cliente() <<": "<<
+                         c[num - 1].cuenta_datos.get_nombre()<<c[num - 1].cuenta_datos.get_apellido()<<
+                         "No tiene registrada ninguna transacción " <<endl;
+                }*/
                 break;
             }
+
+                //Consultar transacciones por numero de clientes
+
             case 8: {
                 //Generar informe de transacciones por6 meses
                 break;
@@ -444,6 +503,7 @@ int main() {
                 break;
             }
             case 10: {
+                files.mostrar_transacciones();
                 //Generar informe total de transacciones
                 break;
             }

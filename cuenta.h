@@ -14,12 +14,14 @@ private:
     string apellido;
     int anio;
     bool estado;
-    int cant_transacciones = 0;
     float saldo;
-    transaccion t[10];
+    int cant_transacciones = 0;
+    static int cantT;
+
 public:
     cuenta(){};
     cuenta(int _n_cliente, string _nombre, string _apellido, int _anio, bool _estado, float _saldo);
+    transaccion t[10];
     void set_n_cliente(int _n_cliente);
     int get_n_cliente();
     void set_nombre(string _nombre);
@@ -35,6 +37,9 @@ public:
     void set_saldo(float _saldo);
     void crear_deposito(float monto_extraccion, int N, int _dia, int _mes, int _anio);
     void cambiar_estado();
+    int get_cant_transacciones();
+    void aumentar_cantT();
+    int get_cantT();
 };
 
 
