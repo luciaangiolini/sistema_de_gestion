@@ -111,16 +111,3 @@ int cuenta::get_cantT(){
     return cantT;
 }
 
-/*
-void cuenta::mostrar_transacciones_un_anio() {
-    int _anio_;
-    cout << "De que anio desea conocer las transacciones: " << endl;
-    cin >> _anio_;
-    for (int i = 0; i < cantT; ++i) {
-        if (t[i].get_anio()==_anio_){
-            for (int i = 0; i < cantT; ++i) {
-                cout << t[i].get_num_t() << "  " << t[i].get_cantidad() << "  " << t[i].get_tipo() << "  " << t[i].get_dia() << "  " << t[i].get_mes() << "  " << t[i].get_anio() << endl;
-            }
-        }
-    }
-}*/

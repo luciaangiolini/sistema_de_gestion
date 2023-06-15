@@ -519,7 +519,6 @@ int main() {
             }
             case 9: {
                 //Generar informe de transacciones por 1 anio
-                //c->cuenta_datos.mostrar_transacciones_un_anio();
                 break;
             }
             case 10: {
